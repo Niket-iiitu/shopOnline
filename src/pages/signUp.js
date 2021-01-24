@@ -28,9 +28,9 @@ export default function SignUp({ currentId, setCurrentId }) {
     email: "",
     password: "",
   });
-  // const data = useSelector((state) =>
-  //   currentId ? state.posts.find((p) => p._id === currentId) : null
-  // );
+   const data = useSelector((state) =>
+     currentId ? state.posts.find((p) => p._id === currentId) : null
+   );
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     console.log(userData);
