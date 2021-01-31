@@ -80,7 +80,7 @@ export default function SignUp() {
       )
     ) {
       try {
-        const { data } = axios.post("http://localhost:5003/users/addUser", {
+        const { data } = axios.post("http://localhost:5005/users/addUser", {
           name: userData.name,
           state: userData.state,
           city: userData.city,
