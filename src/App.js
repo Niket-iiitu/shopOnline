@@ -1,6 +1,7 @@
 import SignUp from "./pages/signUp";
-import signIn from "./pages/signin";
+import SignIn from "./pages/signin";
 import header from "./pages/header";
+import productpage from "./pages/productPage";
 import React from "react";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 const App = () => {
@@ -9,8 +10,9 @@ const App = () => {
       <div>
         <main>
           <Route path="/" component={SignUp} exact />
-          <Route path="/signin" component={signIn} exact />
+          <Route path="/SignIn" component={SignIn} exact />
           <Route path="/home" component={header} exact />
+          <Route path="/product" component={productpage} exact />
         </main>
       </div>
     </BrowserRouter>
@@ -18,7 +20,5 @@ const App = () => {
 };
 
 export default App;
-
-
 
 //background-image: url(https://opconventioncenter.com/wp-content/uploads/2018/02/EXPO-Inc.-tools.jpeg);
