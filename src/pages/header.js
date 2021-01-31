@@ -1,8 +1,16 @@
+<<<<<<< HEAD
+import react, { useState,useEffect } from "react";
+import SearchTiles from "../components/searchTIles";
+import axios from "axios";
+import { useDispatch, useSelector } from 'react-redux';
+import {SEARCH,CITYNAME} from "../components/actions/actionType";
+=======
 import react, { useState, useEffect } from "react";
 import SearchTiles from "../components/searchTIles";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { SEARCH, CITYNAME } from "../components/actions/actionType";
+>>>>>>> d1f05492dd2d954848e96efc88cecee902312bc9
 
 function Header() {
   //   const [userData, setUserData] = useState({
@@ -12,6 +20,70 @@ function Header() {
   //     email: "",
   //     password: "",
   //   });
+<<<<<<< HEAD
+  const dispatch=useDispatch();
+  const [searchdata, setsearchdata] = useState({ state: "", city: "", tool: "" });
+  const postme=[{tool:"hammer",state:"Rajputana",city:"jaipur"},{tool:"drill",state:"raj",city:"degana"}]
+  const postdata=useSelector((state)=>state.searchu);
+  const citynamesData=useSelector((state)=>state.cityu);
+  useEffect(()=>{
+    //dispatch(showallposts());
+   
+},[postdata,citynamesData]);
+
+console.log(postdata);
+
+  const user = localStorage.getItem("name");
+
+  const handleSubmit =async (e) => {
+    console.log(searchdata);
+
+    const searchmee={
+
+      state: searchdata.state,
+      city: searchdata.city,
+      tool: searchdata.tool
+    };
+    console.log(searchmee);
+    
+    e.preventDefault();
+    try {
+       const  dataw  = await axios.post("http://localhost:5005/post/search",searchmee );
+      dispatch({ type: SEARCH ,payload:dataw.data });
+      console.log(dataw.data);
+      //console.log(postdata);
+      
+
+    } catch (err) {
+      console.log(err);
+    }
+
+  };
+
+  ////////////
+  const findcityname =async (e) => {
+   // console.log(searchdata);
+
+    const searchmee={
+
+      state:e
+     
+    };
+    console.log(searchmee);
+    
+   // e.preventDefault();
+    try {
+      const  dataw  = await axios.post("http://localhost:5005/post/cityname",searchmee );
+      dispatch({ type: CITYNAME ,payload:dataw.data });
+            
+      console.log("ok");
+      
+
+    } catch (err) {
+      console.log(err);
+    }
+
+=======
   const dispatch = useDispatch();
   const [searchdata, setsearchdata] = useState({
     state: "",
@@ -77,6 +149,7 @@ function Header() {
     } catch (err) {
       console.log(err);
     }
+>>>>>>> d1f05492dd2d954848e96efc88cecee902312bc9
   };
 
   return (
@@ -88,7 +161,12 @@ function Header() {
             <a className="a">Help</a>
             <a className="a">Rent your tools</a>
             <a className="a">About</a>
+<<<<<<< HEAD
+           
+=======
+>>>>>>> d1f05492dd2d954848e96efc88cecee902312bc9
           </div>
+          
         </div>
 
         <div className="texti">
@@ -99,6 +177,12 @@ function Header() {
       </div>
       <div className="searchme">
         <form noValidate onSubmit={handleSubmit}>
+<<<<<<< HEAD
+          <select className="searchname a1" value={searchdata.state} name="state" id="state" onChange={(e) => {
+            setsearchdata({ ...searchdata, state: e.target.value });
+              findcityname(e.target.value);
+          }}>
+=======
           <select
             className="searchname a1"
             value={searchdata.state}
@@ -109,12 +193,28 @@ function Header() {
               findcityname(e.target.value);
             }}
           >
+>>>>>>> d1f05492dd2d954848e96efc88cecee902312bc9
             <option value="Select your state">Select your state</option>
             <option value="Rajasthan">Rajasthan</option>
             <option value="Madhya Pradesh">madhya pradesh</option>
             <option value="Uttar Pradesh">Uttar Pradesh</option>
             <option value="Goa">Goa</option>
           </select>
+<<<<<<< HEAD
+          <select className="searchname a1" value={searchdata.city} name="city" id="city" onChange={(e) => {
+            setsearchdata({ ...searchdata, city: e.target.value });
+             
+          }}>
+            <option value="Select your city">Select your city</option>
+            
+            {citynamesData.map((post) => (
+          <option value={post.city}> 1 {post.city}</option>
+
+          //<SearchTiles postdetails={post} />
+             ))}
+              <option value="null">we only have services in Above Cities</option>
+             
+=======
           <select
             className="searchname a1"
             value={searchdata.city}
@@ -132,6 +232,7 @@ function Header() {
               //<SearchTiles postdetails={post} />
             ))}
             <option value="null">we only have services in Above Cities</option>
+>>>>>>> d1f05492dd2d954848e96efc88cecee902312bc9
           </select>
 
           <input
@@ -144,12 +245,33 @@ function Header() {
             }}
           />
           <button className="buttonSearch ">
+<<<<<<< HEAD
+
+=======
+>>>>>>> d1f05492dd2d954848e96efc88cecee902312bc9
             <img src="https://img.icons8.com/pastel-glyph/64/000000/search--v3.png" />
           </button>
         </form>
       </div>
       <div className="tiles">
         {postdata.map((post) => (
+<<<<<<< HEAD
+          
+          <SearchTiles postdetails={post} />
+            
+
+        ))}
+      </div>
+      <div class="gallery-image">
+      <div class="img-box">
+        <img src="https://picsum.photos/350/250?image=444" alt="" />
+        <div class="transparent-box">
+          <div class="caption">
+            <p>Library</p>
+            <p class="opacity-low">Architect Design</p>
+          </div>
+        </div> 
+=======
           <SearchTiles postdetails={post} />
         ))}
       </div>
@@ -176,7 +298,23 @@ function Header() {
 
       <div className="footermee f3">
         <p className="copyright">copyright 2021</p>
+>>>>>>> d1f05492dd2d954848e96efc88cecee902312bc9
       </div>
+      <div class="img-box">
+        <img src="https://picsum.photos/350/250/?image=232" alt="" />
+        <div class="transparent-box">
+          <div class="caption">
+            <p>Night Sky</p>
+            <p class="opacity-low">Cinematic</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  <div className="footermee f3">
+    <p className="copyright">copyright 2021</p>
+  </div>
+ 
     </div>
   );
 }
