@@ -55,8 +55,8 @@ function submitValidate(title, pid, description, cpa, city, state, images) {
     title.trim().length > 3 &&
     description.trim().length > 9 &&
     cpa > 0 &&
-    city.trim().length != 0 &&
-    state.trim().length != 0 &&
+    city.trim().length !== 0 &&
+    state.trim().length !== 0 &&
     images.length > 0 &&
     pid.length > 0
   )
