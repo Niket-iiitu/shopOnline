@@ -3,13 +3,35 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 export default function SignIn() {
+  const [userData, setUserData] = useState({
+    userID: "",
+    pass: "",
+  });
+
   const history = useHistory();
   const MoveToHome = () => {
     console.log("Moving to home....");
     history.push("/home");
   };
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(userData);
+    try {
+      const { data } = await axios.post("http://localhost:5005/users/start", {
+        userID: userData.userID,
+        pass: userData.pass,
+      });
+      console.log(data);
+      localStorage.setItem("name", data.name);
+      localStorage.setItem("state", data.state);
+      localStorage.setItem("city", data.city);
+      localStorage.setItem("email", data.email);
+      MoveToHome();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="signin">
@@ -27,6 +49,9 @@ export default function SignIn() {
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Email Address"
+              onChange={(e) => {
+                setUserData({ ...userData, userID: e.target.value });
+              }}
             />
           </div>
           <div className="form-group">
@@ -35,6 +60,9 @@ export default function SignIn() {
               className="form-control input"
               id="exampleInputPassword1"
               placeholder="***********"
+              onChange={(e) => {
+                setUserData({ ...userData, pass: e.target.value });
+              }}
             />
           </div>
 

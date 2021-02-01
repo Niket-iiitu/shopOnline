@@ -54,8 +54,8 @@ function submitValidate(title, pid, description, cpa, city, state, images) {
     title.trim().length > 3 &&
     description.trim().length > 9 &&
     cpa > 0 &&
-    city.trim().length != 0 &&
-    state.trim().length != 0 &&
+    city.trim().length !== 0 &&
+    state.trim().length !== 0 &&
     images.length > 0 &&
     pid.length > 0
   )
@@ -111,7 +111,7 @@ export default function Product() {
       )
     ) {
       try {
-        const { data } = axios.post("http://localhost:5003/users/addItem", {
+        const { data } = axios.post("http://localhost:5005/users/addItem", {
           title: itemData.title,
           pid: itemData.pid,
           description: itemData.description,
