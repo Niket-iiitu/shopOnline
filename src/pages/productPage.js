@@ -50,8 +50,8 @@ function Product() {
                     <div>
                         <img className="logoheader" src="logo192.png" />
                         <a className="a">Help</a>
-                        <a className="a">Rent your tools</a>
-                        <a className="a">About</a>
+                        <a className="a" href="/products">Rent your tools</a>
+                        <a className="a" href="/aboutUs">About</a>
 
                     </div>
 
@@ -60,7 +60,7 @@ function Product() {
                  
 
                     <div className="productDetails">
-                    <img className="productimage" src="https://content.fortune.com/wp-content/uploads/2018/04/iphone8_iphone8plus_product_red_front_back_041018-e1523280198726.jpg"/>
+                    <img className="productimage" src={postdata[0].images || "https://content.fortune.com/wp-content/uploads/2018/04/iphone8_iphone8plus_product_red_front_back_041018-e1523280198726.jpg"}/>
                     
                    <div className="discription" >
                    <h1>{postdata[0].title} </h1>

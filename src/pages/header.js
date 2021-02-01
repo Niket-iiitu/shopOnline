@@ -1,3 +1,4 @@
+
 import react, { useState, useEffect } from "react";
 import SearchTiles from "../components/searchTIles";
 import axios from "axios";
@@ -24,6 +25,16 @@ function Header() {
   ];
   const postdata = useSelector((state) => state.searchu);
   const citynamesData = useSelector((state) => state.cityu);
+  var citynamesData2=[];
+  
+  console.log(citynamesData);
+  for(var i=0;i<citynamesData.length;i++){
+citynamesData2.push(citynamesData[i].city);
+  }
+  const set1 = new Set(citynamesData2);
+ const citynamesData3= Array.from(set1);
+  //console.log(set1);
+  
   useEffect(() => {
     //dispatch(showallposts());
   }, [postdata, citynamesData]);
@@ -86,9 +97,11 @@ function Header() {
           <div>
             <img className="logoheader" src="logo192.png" />
             <a className="a">Help</a>
-            <a className="a">Rent your tools</a>
-            <a className="a">About</a>
+            <a className="a" href="/products">Rent your tools</a>
+            <a className="a" href="/aboutUs" >About</a>
+            
           </div>
+          
         </div>
 
         <div className="texti">
@@ -126,8 +139,8 @@ function Header() {
           >
             <option value="Select your city">Select your city</option>
 
-            {citynamesData.map((post) => (
-              <option value={post.city}> 1 {post.city}</option>
+            {citynamesData3.map((post) => (
+              <option value={post}> 1 {post}</option>
 
               //<SearchTiles postdetails={post} />
             ))}
@@ -177,7 +190,12 @@ function Header() {
       <div className="footermee f3">
         <p className="copyright">copyright 2021</p>
       </div>
+      
     </div>
+    
+  
+ 
+    
   );
 }
 
